@@ -1,19 +1,19 @@
 const btn = document.querySelector('.btn');
 let out = document.querySelector('.persons');
-let index = 0;
+let index = 1;
 
 btn.addEventListener('click', addPerson);
 
 addPerson();
 
 function addPerson() {
-  fetch(`https://jsonplaceholder.typicode.com/users?_page=1&_limit=10`)
+  fetch(`https://jsonplaceholder.typicode.com/users?_page=${index}&_limit=1`)
     .then(response => response.json())
     .then(json => {
-      if (index < json.length) {
+      if (json[0]) {
         let card = document.createElement('div');
         card.classList.add('card');
-        card.innerHTML = json[index].name + '<br>' + json[index].email;
+        card.innerHTML = json[0].name + '<br>' + json[0].email;
         out.append(card);
         index++;
       }
