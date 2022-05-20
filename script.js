@@ -17,5 +17,8 @@ function addPerson() {
         out.append(card);
         index++;
       }
+      else {
+        btn.style.display = 'none';
+      }
     })
 }
